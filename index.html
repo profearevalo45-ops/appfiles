@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Mi Agenda · Planillas y Organización Escolar</title>
+
+<!-- ===== PWA: manifest embebido como data URI (íconos incluidos en base64) ===== -->
+<!-- No depende de manifest.json ni de icon-192.png/icon-512.png como archivos aparte -->
+<link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjogIk1pIEFnZW5kYSIsICJzaG9ydF9uYW1lIjogIk1pIEFnZW5kYSIsICJkZXNjcmlwdGlvbiI6ICJQbGFuaWxsYXMgeSBvcmdhbml6YWNpw7NuIGVzY29sYXIgcGFyYSBkb2NlbnRlczogbWF0ZXJpYXMsIGFsdW1ub3MsIG5vdGFzLCBleMOhbWVuZXMgeSBjYWxlbmRhcmlvLiIsICJzdGFydF91cmwiOiAiLiIsICJzY29wZSI6ICIuIiwgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsICJvcmllbnRhdGlvbiI6ICJwb3J0cmFpdC1wcmltYXJ5IiwgImJhY2tncm91bmRfY29sb3IiOiAiI2Y2ZjRlZSIsICJ0aGVtZV9jb2xvciI6ICIjMzg4ZTNjIiwgImxhbmciOiAiZXMtQVIiLCAiaWNvbnMiOiBbeyJzcmMiOiAiZGF0YTppbWFnZS9wbmc7YmFzZTY0LGlWQk9SdzBLR2dvQUFBQU5TVWhFVWdBQUFNQUFBQURBQ0FJQUFBRGR2dnRRQUFBRkswbEVRVlI0bk8zZFBWSWJTeFNHWWVGeVJNWktDRWdJQ0wwWEI5NERBUXNnYytDOWVBc0VySVJNc1lPcG1wcVM1VExUWDUvZmVaLzhjcVhUTDZlbGtncmZQTDQrbllCUlg2SWZBR29qSUVnSUNCSUNnb1NBSUNFZ1NBZ0lFZ0tDaElBZ0lTQklDQWdTQW9LRWdDQWhJRWkrUmorQUxNNGY1NzMveWUzZHJjVWpxZVdJQVEyMDh2bWZjN1NxamhMUXJHaDIvWStPRUZQbmdOeWkrY3dENkJwVHc0REN1N2xxZlZUTlN1b1RVTTV1L3Rhc3BBNEJWVW5ud3ZLd3EyZFVPS0NpM1Z5b3ZwQktCdFFqblF0RkYxS3hnRnFtczFVdW8wb2ZaYlN2WjFYb21kYllRSVVHT2t1VlZaUTlvQU9tczVVL285UlgyTUhyV1dXZVE5SU5sSGxrSWRLdW9vd2JpSHIrSmVGazBnV1VjRWFwWkp0UG9pc3MyMmpTU25XZFpkbEExTE5Ya29tbENDakpMTXJKTUxmNGdESk1vYTd3NlFVSEZQNzhHNGlkWWRpTGFOS1pLUEJsZGN3R29oNExJVk1OQ0loNjdQalAxanNnNnJIbVBPSDRkMkVvelRVZzFvOFB6em43QlVROW50eW03UlFROWZqem1ibEhRTlFUeFdIeTVnRlJUeXpyK2ZNdURCTGJqektzODM5L2VUUDkrVzd1bngvc2Z2ajU0MnozS2NlTjNUODRaMXBQbTNTMlRETXlhc2pxQ3FPZUFhYlB5K2hFNnIwRzZsclBvdHl6TXduSWJ2MlVtKzhBdStkb2NTN3pBNkllWGFHRzZsMWhTR1Z5UUt5Zldhb3NJVFlRSkRNRDRsT0xLaWFlMUxTQXFLZVdXZWZGRlFiSm5JQllQeFZOT1RVMkVDUVRBbUw5MUtXZkhSc0lFZ0tDUkEySSs2czY4UVRaUUpCSUFiRitlbERPTWRIZlNCUjkvLzBqK2lIczhPdmJ6K2lITUFkWEdDVGpBWEYvZFRKOG1uMnVzRGFYUWkxY1laQU1Cc1Q5MWMvWW1iS0JJQ0VnU0FnSWtwR0FlQUhVMWNESnNvRWdJU0JJQ0FpUzNRSHhBcWkzdmVmTEJvS0VnQ0FoSUVqNmZCclBGOHBDc0lFZ0lTQkk5bDFobWQvRHQ3a1V3dTM2dTlKc0lFZ0lDQklDZ29TQUlDRWdTQWdJRWdLQ2hJQWdJU0JJQ0FnU0FvS0VnQ0FoSUVqNFFsbU1OdDhkWUFOQlFrQ1E3THZDYnU5dTAzNm5yTTJsRUc3WHZ6RFBCb0tFZ0NBaElFZ0lDQklDZ29TQUlOa2QwSzczZUNobjcvbXlnU0FoSUVnSUNKS1JnSGdaMU5YQXliS0JJQ0VnU1BoQ1dZdzIzeDBZM0VDOERPcG43RXk1d2lEcGM0VzF1UlJxR2Q5QTNHS2RESjhtVnhna0JBU0pGQkMzV0EvS09iS0JJRkVEWWdsVko1NGdHd2dTQW9Ka1FrRGNZblhwWjhjR2dtUk9RQ3loaXFhY0doc0lrbWtCc1lScW1YVmVNemNRRFZVeDhhUzR3aUNaSEpEZEVycC9makQ2eVRuWlBkKzVaOFFHZ21SK1FDd2hYWlgxY3pMYVFEU2tLRlRQcWVJVjFydWhjcy9PS2lEVHQvVGxwdnhKcHMvTDZFUnVIbCtmTEg3dXd2cHZBcisvdkpuK2ZEZld2eEoydjgrMkFaM3NHOEovbWQ0RzlWNERJUlh6Z1BoOEk1YjEvRDAyRUExRmNaaTgweFZHUS81OFp1NzNHb2lHUExsTjIvVkZOQTM1OEp3ejc4SWc4UTZJSldUTmVjSUJHNGlHN1BqUE51WUtveUVMSVZNTit3dGx5N1BsZzQ0cEFuOGhnMTlFczRwMHNUT01meGRHUTRydzZjVUhkRW93aGFJeXpDMUZRS2NjczZnbHljUVMvWmxmWGxaL1VwSjBGbGsyMENyVmRCTEtOcDkwQVozeXpTaVBoSk5KZElWdGNaMWRTSmpPSXVNR1dxV2RtclBNYzBpNmdWWUhYMFdaMDFsa0QyaHh3SXp5cDdOSWZZVmRxREpUWGFGbldtTURyZHF2b2tMcExJb0Z0R2laVWJsMEZpVURXcXdUTDExUzBXNVdoUU5hRlYxSTFkTlpkQWhvVVdVaDllaG0xU2VnVmM2U21uV3phaGpRYW50bUlURjFqV2FyYzBCYmJqRWRJWnF0b3dTMGRmV01CNm82V2l0WEhUR2dxNmhoVEtXUE1wQVFBVUZDUUpBUUVDUUVCQWtCUVVKQWtCQVFKQVFFQ1FGQlFrQ1FFQkFrQkFUSkh3STBpNm9DVFBIL0FBQUFBRWxGVGtTdVFtQ0MiLCAic2l6ZXMiOiAiMTkyeDE5MiIsICJ0eXBlIjogImltYWdlL3BuZyIsICJwdXJwb3NlIjogImFueSBtYXNrYWJsZSJ9LCB7InNyYyI6ICJkYXRhOmltYWdlL3BuZztiYXNlNjQsaVZCT1J3MEtHZ29BQUFBTlNVaEVVZ0FBQWdBQUFBSUFDQUlBQUFCN0drT3RBQUFQZFVsRVFWUjRuTzNkTzNZc1ZSS0cwWUoxTFhsM0pCZzRHSmpNQllNNVlQUUE4RENZQzFOb28wZHlQZGx0cUpkYTZGR3FSMmFlaVBqM0hnQTNvZUxFVnllRjRMdWYvdmo1QkVDZTcxYy9BQUJyQ0FCQUtBRUFDQ1VBQUtFRUFDQ1VBQUNFRWdDQVVBSUFFRW9BQUVJSkFFQW9BUUFJSlFBQW9RUUFJSlFBQUlRU0FJQlFBZ0FRU2dBQVFna0FRQ2dCQUFnbEFBQ2hCQUFnbEFBQWhCSUFnRkFDQUJCS0FBQkNDUUJBS0FFQUNDVUFBS0VFQUNDVUFBQ0VFZ0NBVUFJQUVFb0FBRUlKQUVBb0FRQUlKUUFBb1FRQUlKUUFBSVFTQUlCUVgxWS9BR3p2OGR2akhuL1poNjhQZS94bFlSVUJvSitkOXZ2OWY2NUMwSXNBVU5xcVhYK2JkNTlXRlNoTEFDaWsxN3EvME51L0tVbWdDQUZncFpFYi8xT3YvcTcxZ0ZVRWdFTmxidnp6OUlCVkJJRGRXZnBYZWZtUFN3ellsUUN3QzB0L0UyTEFyZ1NBTGRuNyszbitaNnNFYkVVQXVKZWxmekRYQXJZaUFOekkzcS9BdFlCN0NBRFhzZmRyVWdKdUlBQmN4Tjd2UWdtNG5BQndqcjNmbHhMd0tRSGdmVmIvR0U4ZnBRendsZ0R3RC9iK1ZDNEV2Q1VBL0kvVkg4S0ZnR2NDa003ZXorUkN3RWtBa2xuOW5Gd0lzZ2xBSXF1ZlYyUWdrd0Jrc2ZvNVF3YlNDRUFLcTU4THlVQU9BWmpQNnVjR01wQkFBQ2F6K3JtVERNd21BRE5aL1d4SUJxWVNnR21zZm5ZaUEvTUl3QnhXUHdlUWdVa0VZQUtybjRQSndBd0MwSnZWejBJeTBOMzNxeCtBMjluK1ZHQU8rM0lEYU1tUm94UlhnYVlFb0Jtcm43SmtvQjJ2Z0RxeC9hblBsRGJpQnRDRFEwVWpyZ0pkQ0VCMVZqOU55VUI5WGdHVlp2dlRuUm11ekEyZ0tNZUdNVndGeW5JRHFNajJaeDVUWFpBYlFDME9DWU81Q2xUakJsQ0k3VThDYzE2SEFGVGhWSkREdEJmaEZkQjZEZ09CdkE2cXdBMWdNZHVmWk9aL0xRRll5ZlNEVTdDUVYwQnJHSHA0NW5YUUttNEFDOWorOEpaemNUd0JPSm9waDQ4NEhRZnpDdWc0aGhzKzVYWFFrZHdBRG1MN3crV2NsMk1Jd0JGTU0xekxxVG1BQU96T0hNTnRuSjI5Q2NDK1RERGN3d25hbFI4Qzc4WGd3aWI4V0hnL2JnQzdzUDFoVzg3VUhnUmdleVlWOXVCa2JVNEFObVpHWVQvTzE3WUVZRXVtRS9ibWxHMUlBRFpqTHVFWXp0cFdCR0FiSmhLTzVNUnRRZ0EyWUJiaGVNN2QvUVRnWHFZUVZuSDY3aVFBZHpGL3NKWXplQThCdUozSmd3cWN4SnNKd0kzTUhOVGhQTjVHQUc1aDJxQWFwL0lHQW5BMWN3WTFPWnZYRW9Ecm1EQ296QW05aWdCY3dXeEJmYzdwNVFUZ1VxWUt1bkJhTHlRQUZ6RlAwSXN6ZXdrQitKeEpnbzZjM0U4SndDZk1FUFRsL0o0bkFPZVlIdWpPS1Q1REFENWtibUFHWi9rakF2QStFd09UT05IdkVvQjNtQldZeDdsK1N3QUFRZ25BYTc0bXdGUk85eXNDOEEvbUEyWnp4bDhTZ1A4ekdaREFTWDhtQVA5akppQ0g4LzVFQUU0bjB3QjVuUHFUQUFERUVnQmZCQ0NVczU4ZUFCTUF5Y0kzUUhRQXdqOTc0SlM5QjZJREFKQXNOd0RKMlFkZWl0MEdYMVkvd0JxeG4vZEwvL25YdjFjL0FsWDg4UHVQcXg5aHNjZHZqdzlmSDFZL3hkRysrK21QbjFjL3c5R1N0NytsejNuaEpVaHJRT2dOSUpEVnp5V2U1eVM4QkNIaWJnQ0JYLyt0Zm00V21JR29TMERXRDRGdGY3aEs0UHhFYlltZ0cwRFU1M3FLUExyc0orMHFFSElQeUxvQjVMRDkyWmFKR2lrbEFGRmYvNTFWOWhBMVZ5RWJJeUlBSVovbGs2aFR5c0dpcGl0aGIwUUVJRWZVK1dRSk16YkovQUFrWlB5Sms4a3hjaVp0L1BZWUhvRHhueCt3cTlrN1pIZ0FjdVI4S2FNQzh6YkQ1QURNVHZkTFRpUEh5NW02d1p0a2NnQUFPR05zQUFaSCs1V2NMMkpVa3pON1UvZkp6QUJNL2JTQVZVWnVsWmtCeUpIekZZeWFUR0JyQXdNd010VEFjdk4yeThBQUFIQ0phUUdZbDJpZ2ptRWJabFFBaG4wMm4vTDZsUXJTNW5EU25oa1ZBQUF1TnljQWs3SU1WRFptMjh3SkFBQlhHUktBTVVFR1dwaXhjNFlFQUlCclRRakFqQlFEdlF6WVBCTUNBTUFOMmdkZ1FJU0JwcnJ2bi9ZQkFPQTJ2UVBRUGI5QWQ2MjNVTzhBQUhDenhnRm9IVjVnakw2N3FIRUFBTGhIMXdEMFRTNHdUOU9OMURVQUFOeXBaUUNheGhZWXJPTmVhaGtBQU83WEx3QWRNd3NrYUxlZCtnVUFnRTAwQzBDN3dBSlJldTJvWmdFQVlDdWRBdEFyclVDbVJwdXFVd0FBMkpBQUFJUnFFNEJHdHlvZ1hKZDkxU1lBQUd5clJ3QzY1QlRnU1l1dDFTTUFBR3hPQUFCQ05RaEFpNXNVd0N2MWQ5ZVgxUTlBWGIvKy9kdnFSMkFEZi8zeTUrcEhvS2pxTjRENkNRWDRTUEVOVmowQUFPeEVBQUJDbFE1QThkc1R3S2NxNzdIU0FRQmdQd0lBRUtwdUFDcmZtd0F1VjNhYjFRMEFBTHNTQUlCUVJYOFR1T3lOS1lyZklJV3RQSDU3ZlBqNnNQb3BYbk1EQUFnbEFBQ2hLZ2JBK3g5Z25vS2JyV0lBQURpQUFBQ0VFZ0NBVU9VQ1VQQTFHY0FtcXUyM2NnRUE0QmdDQUJDcVZnQ3EzWThBdGxWcXk5VUtBQUNIRVFDQVVBSUFFS3BRQUVxOUdnUFlTWjFkVnlnQUFCeEpBQUJDQ1FCQXFDb0JxUE5TREdCdlJUWmVsUUFBY0RBQkFBZ2xBQUNoQkFBZ1ZJa0FGUGw1Q01CaEt1eTlFZ0VBNEhnQ0FCQktBQUJDQ1FCQXFQVUJxUENURUlEakxkOSs2d01Bd0JJQ0FCQktBQUJDQ1FCQUtBRUFDTFU0QU10L0NBNncwTm9kNkFZQUVPckw2Z2VncmwvLy9tMzFJN0NCdjM3NWMvVWpVSlFiQUVBb0FRQUlKUUFBb1FRQUlOVEtBUGgzUUFFV2JrSTNBSUJRQWdBUVNnQUFRZ2tBUUNpL0NjeUgvQVlwek9ZR0FCQktBQUJDQ1FCQUtBRUFDQ1VBQUtHV0JjQi9Cd0xneWFwOTZBWUFFRW9BQUVJSkFFQW9BUUFJSlFBQW9RUUFJSlFBQUlRU0FJQlFBZ0FRU2dBQVFna0FRQ2dCQUFnbEFBQ2hCQUFnbEFBQWhCSUFnRkFDQUJCS0FBQkNDUUJBS0FFQUNDVUFBS0VFQUNDVUFBQ0VFZ0NBVUFJQUVFb0FBRUlKQUVBb0FRQUl0U3dBRDE4ZlZ2M1JBS1dzMm9kZmx2eXB0UERyMzcrdGZnUTI4TmN2ZjY1K0JJcnlDZ2dnbEFBQWhCSUFnRkFDQUJCS0FBQkNDUUJBS0FFQUNDVUFBS0VFQUNEVXl0OEVmdmo2OFBqdGNlRURjSjdmSUlVRExQenY0cmdCQUlRU0FJQlFBZ0FRU2dBQVFna0FRQ2dCQUFpMU9BRCt2MkJBc3JVNzBBMEFJSlFBQUlRU0FJQlFBZ0FRU2dBQVFxMFBnSDhSQ01pMGZQdXREd0FBU3dnQVFDZ0JBQWdsQUFDaFNnUmcrVTlDQUE1V1llK1ZDQUFBeHhNQWdGQUNBQkJLQUFCQ1ZRbEFoWitIQUJ5anlNYXJFZ0FBRGlZQUFLRUVBQ0JVb1FBVWVTa0dzS3M2dTY1UUFBQTRrZ0FBaEJJQWdGQzFBbERuMVJqQUhrcHR1Vm9CQU9Bd0FnQVFxbHdBU3QyUEFEWlViYitWQ3dBQXgvaXkrZ0dvNjllL2YxdjlDR3pncjEvK1hQMElGT1VHQUJDcVlnQ3F2U1lEdUYvQnpWWXhBQUFjUUFBQVFoVU5RTUc3RXNETmF1NjBvZ0VBWUc4Q0FCQ3FiZ0JxM3BnQXJsVjJtOVVOQUFDNzhwdkFmTWh2a01Kc3BXOEFaZTlOQUJlcXZNZEtCd0NBL1FnQVFLanFBYWg4ZXdJNHIvZ0dxeDRBQUhiU0lBREZFd3J3cnZxN3EwRUFBTmlEQUFDRTZoR0EramNwZ0pkYWJLMGVBUUJnYzIwQzBDS25BS2MrKzZwTkFBRFlsZ0FBaE9vVWdDNjNLaUJabzAzVktRQUFiS2haQUJxbEZRalVhMGMxQ3dBQVcra1hnRjZCQlhLMDIwNzlBZ0RBSmxvR29GMW1nZkU2N3FXV0FRRGdmbDBEMERHMndGUk5OMUxYQUFCd3A4WUJhSnBjWUppK3U2aHhBQUM0Uis4QTlBMHZNRVByTGRRN0FBRGNySDBBV3VjWGFLMzcvbWtmQUFCdU15RUEzU01NZERSZzgwd0lBQUEzR0JLQUFTa0dHcG14YzRZRUFJQnJ6UW5BakNBRDlZM1pObk1DQU1CVlJnVmdUSll2OU1QdlA2NStCSWlidzBsN1psUUFUck0rRzZDYVlSdG1XZ0FBdU5EQUFBeEw5SGxwdDIrcWlackFlYnRsWUFBQXVNVE1BTXdMTmJEV3lLMHlNd0Nub1ovV3U2THU0SlNTTTN0VDk4bllBQUJ3M3VRQVRJMzJXemxmeEtnalorb0diNUxKQVlpU2N4cXB3THpOTUR3QWc5TU5xMFJ0LzlrN1pIZ0FUdE0vdjVlaWppVWNZUHoybUIrQUtCckEzc3pZSkJFQkdKL3hsNXhQOWhNMVhRbDdJeUlBcDR6UDhsblVLZVV3VVhNVnNqRlNBcEFtNnF5eXR4OSsvOUZFalJRVWdKQ2tQM05vMlVUZ0ZPWHNpcUFBbkpJKzEyZUJwNWNOQmM1UDFKYjQ3cWMvZmw3OURFZDcvUGE0K2hFVytNKy8vcjM2RWVna2NQV2Z3cmIvNlhUNnN2b0JPTWpUZVpZQnpzdmMrN0VTYndDbjFFdkFLMkxBTTN2L2xQZjEveFFiZ0pNR0FDOEVidjlUMmcrQlg4cjh2SUczWXJkQmJnQUF3a1VISURiN3dMUGtQUkFkZ0ZQMlp3K0ViNEQwQUp6aUp3QmlPZnNDQUJCS0FFNG5Yd1FnajFOL0VvQm5wZ0Z5T085UEJPRC96QVFrY05LZkNjQS9tQXlZelJsL1NRQmVNeDh3bGRQOWlnQUFoQktBZC9pYUFQTTQxMjhKd1B2TUNremlSTDlMQUQ1a1ltQUdaL2tqQW5DT3VZSHVuT0l6Qk9BVHBnZjZjbjdQRTREUG1TSG95TW45bEFCY3hDUkJMODdzSlFUZ1V1WUp1bkJhTHlRQVZ6QlZVSjl6ZWprQnVJN1pnc3FjMEtzSXdOVk1HTlRrYkY1TEFHNWh6cUFhcC9JR0FuQWowd1oxT0krM0VZRGJtVG1vd0VtOG1RRGN4ZVRCV3M3Z1BRVGdYdVlQVm5INjdpUUFHekNGY0R6bjduNENzQTJ6Q0VkeTRqWWhBSnN4a1hBTVoyMHJBckFsY3dsN2M4bzJKQUFiTTUyd0grZHJXd0t3UFRNS2UzQ3lOaWNBdXpDcHNDMW5hZzlmVmovQVdFL3ordmp0Y2ZXRFFHOVcvMzdjQVBabGR1RWVUdEN1QkdCM0poaHU0K3pzVFFDT1lJN2hXazdOQVFUZ0lLWVpMdWU4SE1NUGdZL2p4OEx3S2F2L1NHNEFSelBmOEJHbjQyQUNzSUFwaDdlY2krTjVCYlNHMTBId3pPcGZ4UTFnSlhNUFRzRkNBckNZNlNlWitWL0xLNkQxdkE0aWtOVmZnUnRBRmM0RE9VeDdFUUpRaUZOQkFuTmVoMWRBdFhnZHhHQldmelZ1QUJVNUo4eGpxZ3R5QXlqS1ZZQXhyUDZ5M0FCS2MzTG96Z3hYNWdaUW5hc0FUVm45OVFsQUR6SkFJMVovRjE0QmRlSmNVWjhwYmNRTm9CbFhBY3F5K3RzUmdKWmtnRktzL3FhOEFtck1xYU1DYzlpWEcwQnZyZ0lzWlBWM0p3QVR5QUFIcy9wbkVJQTVaSUFEV1AyVENNQTBNc0JPclA1NUJHQW1HV0JEVnY5VUFqQ1pESEFucTM4MkFaaFBCcmlCMVo5QUFGTElBQmV5K25NSVFCWVo0QXlyUDQwQUpKSUJYckg2TXdsQUxobmdaUFZuRTRCMHorZGZDYUxZKzV3RWdHY3VCQ0dzZnA0SkFQL2dRakNWdmM5YkFzRDdYQWpHc1ByNWlBQndqZ3RCWC9ZK254SUFMcUlFWGRqN1hFNEF1STRTMUdUdmN3TUI0RVpLVUlHOXp6MEVnSHU5M0VGaWNBQkxuNjBJQUZ0eUxkaVB2Yy9tQklCZHVCWnN3dEpuVndMQTdzVGdLcFkraHhFQUR2VnF1K25CeWNabkhRRmdwY3dlMlBnVUlRQVU4bll6RGtpQ2RVOVpBa0JwNzI3UHNsV3c2K2xGQU9qbjB6MjdVeUhzZDRZUkFBYXlxZUVTMzY5K0FBRFdFQUNBVUFJQUVFb0FBRUlKQUVBb0FRQUlKUUFBb1FRQUlKUUFBSVFTQUlCUUFnQVFTZ0FBUWdrQVFDZ0JBQWdsQUFDaEJBQWdsQUFBaEJJQWdGQUNBQkJLQUFCQ0NRQkFLQUVBQ0NVQUFLRUVBQ0NVQUFDRUVnQ0FVQUlBRUVvQUFFSUpBRUFvQVFBSUpRQUFvUVFBSUpRQUFJUVNBSUJRQWdBUVNnQUFRZ2tBUUNnQkFBajFYKzNlOEhsYVkwTnRBQUFBQUVsRlRrU3VRbUNDIiwgInNpemVzIjogIjUxMng1MTIiLCAidHlwZSI6ICJpbWFnZS9wbmciLCAicHVycG9zZSI6ICJhbnkgbWFza2FibGUifV19">
+<meta name="theme-color" content="#388e3c">
+
+<!-- ===== PWA: compatibilidad Android / Chrome ===== -->
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="icon" type="image/png" sizes="192x192" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAIAAADdvvtQAAAFK0lEQVR4nO3dPVIbSxSGYeFyRMZKCEgICL0XB94DAQsgc+C9eAsErIRMsYOpmpqS5TLTX5/feZ/8cqXTL6elkgrfPL4+nYBRX6IfAGojIEgICBICgoSAICEgSAgIEgKChIAgISBICAgSAoKEgCAhIEi+Rj+ALM4f573/ye3drcUjqeWIAQ208vmfc7SqjhLQrGh2/Y+OEFPngNyi+cwD6BpTw4DCu7lqfVTNSuoTUM5u/taspA4BVUnnwvKwq2dUOKCi3VyovpBKBtQjnQtFF1KxgFqms1Uuo0ofZbSvZ1XomdbYQIUGOkuVVZQ9oAOms5U/o9RX2MHrWWWeQ9INlHlkIdKuoowbiHr+JeFk0gWUcEapZJtPoiss22jSSnWdZdlA1LNXkomlCCjJLMrJMLf4gDJMoa7w6QUHFP78G4idYdiLaNKZKPBldcwGoh4LIVMNCIh67PjP1jsg6rHmPOH4d2EozTUg1o8Pzzn7BUQ9ntym7RQQ9fjzmblHQNQTxWHy5gFRTyzr+fMuDBLbjzKs839/eTP9+W7unx/sfvj542z3KceN3T84Z1pPm3S2TDMyasjqCqOeAabPy+hE6r0G6lrPotyzMwnIbv2Um+8Au+docS7zA6IeXaGG6l1hSGVyQKyfWaosITYQJDMD4lOLKiae1LSAqKeWWefFFQbJnIBYPxVNOTU2ECQTAmL91KWfHRsIEgKCRA2I+6s68QTZQJBIAbF+elDOMdHfSBR9//0j+iHs8Ovbz+iHMAdXGCTjAXF/dTJ8mn2usDaXQi1cYZAMBsT91c/YmbKBICEgSAgIkpGAeAHU1cDJsoEgISBICAiS3QHxAqi3vefLBoKEgCAhIEj6fBrPF8pCsIEgISBI9l1hmd/Dt7kUwu36u9JsIEgICBICgoSAICEgSAgIEgKChIAgISBICAgSAoKEgCAhIEj4QlmMNt8dYANBQkCQ7LvCbu9u036nrM2lEG7XvzDPBoKEgCAhIEgICBICgoSAINkd0K73eChn7/mygSAhIEgICJKRgHgZ1NXAybKBICEgSPhCWYw23x0Y3EC8DOpn7Ey5wiDpc4W1uRRqGd9A3GKdDJ8mVxgkBASJFBC3WA/KObKBIFEDYglVJ54gGwgSAoJkQkDcYnXpZ8cGgmROQCyhiqacGhsIkmkBsYRqmXVeMzcQDVUx8aS4wiCZHJDdErp/fjD6yTnZPd+5Z8QGgmR+QCwhXZX1czLaQDSkKFTPqeIV1ruhcs/OKiDTt/TlpvxJps/L6ERuHl+fLH7uwvpvAr+/vJn+fDfWvxJ2v8+2AZ3sG8J/md4G9V4DIRXzgPh8I5b1/D02EA1FcZi80xVGQ/58Zu73GoiGPLlN2/VFNA358Jwz78Ig8Q6IJWTNecIBG4iG7PjPNuYKoyELIVMN+wtly7Plg44pAn8hg19Es4p0sTOMfxdGQ4rw6cUHdEowhaIyzC1FQKccs6glycQS/ZlfXlZ/UpJ0Flk20CrVdBLKNp90AZ3yzSiPhJNJdIVtcZ1dSJjOIuMGWqWdmrPMc0i6gVYHX0WZ01lkD2hxwIzyp7NIfYVdqDJTXaFnWmMDrdqvokLpLIoFtGiZUbl0FiUDWqwTL11S0W5WhQNaFV1I1dNZdAhoUWUh9ehm1SegVc6SmnWzahjQantmITF1jWarc0BbbjEdIZqtowS0dfWMB6o6WitXHTGgq6hhTKWPMpAQAUFCQJAQECQEBAkBQUJAkBAQJAQECQFBQkCQEBAkBATJHwI0i6oCTPH/AAAAAElFTkSuQmCC">
+<link rel="icon" type="image/png" sizes="512x512" href="data:image/png;base64,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">
+
+<!-- ===== PWA: compatibilidad iOS / Safari ===== -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Mi Agenda">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAIAAADdvvtQAAAFK0lEQVR4nO3dPVIbSxSGYeFyRMZKCEgICL0XB94DAQsgc+C9eAsErIRMsYOpmpqS5TLTX5/feZ/8cqXTL6elkgrfPL4+nYBRX6IfAGojIEgICBICgoSAICEgSAgIEgKChIAgISBICAgSAoKEgCAhIEi+Rj+ALM4f573/ye3drcUjqeWIAQ208vmfc7SqjhLQrGh2/Y+OEFPngNyi+cwD6BpTw4DCu7lqfVTNSuoTUM5u/taspA4BVUnnwvKwq2dUOKCi3VyovpBKBtQjnQtFF1KxgFqms1Uuo0ofZbSvZ1XomdbYQIUGOkuVVZQ9oAOms5U/o9RX2MHrWWWeQ9INlHlkIdKuoowbiHr+JeFk0gWUcEapZJtPoiss22jSSnWdZdlA1LNXkomlCCjJLMrJMLf4gDJMoa7w6QUHFP78G4idYdiLaNKZKPBldcwGoh4LIVMNCIh67PjP1jsg6rHmPOH4d2EozTUg1o8Pzzn7BUQ9ntym7RQQ9fjzmblHQNQTxWHy5gFRTyzr+fMuDBLbjzKs839/eTP9+W7unx/sfvj542z3KceN3T84Z1pPm3S2TDMyasjqCqOeAabPy+hE6r0G6lrPotyzMwnIbv2Um+8Au+docS7zA6IeXaGG6l1hSGVyQKyfWaosITYQJDMD4lOLKiae1LSAqKeWWefFFQbJnIBYPxVNOTU2ECQTAmL91KWfHRsIEgKCRA2I+6s68QTZQJBIAbF+elDOMdHfSBR9//0j+iHs8Ovbz+iHMAdXGCTjAXF/dTJ8mn2usDaXQi1cYZAMBsT91c/YmbKBICEgSAgIkpGAeAHU1cDJsoEgISBICAiS3QHxAqi3vefLBoKEgCAhIEj6fBrPF8pCsIEgISBI9l1hmd/Dt7kUwu36u9JsIEgICBICgoSAICEgSAgIEgKChIAgISBICAgSAoKEgCAhIEj4QlmMNt8dYANBQkCQ7LvCbu9u036nrM2lEG7XvzDPBoKEgCAhIEgICBICgoSAINkd0K73eChn7/mygSAhIEgICJKRgHgZ1NXAybKBICEgSPhCWYw23x0Y3EC8DOpn7Ey5wiDpc4W1uRRqGd9A3GKdDJ8mVxgkBASJFBC3WA/KObKBIFEDYglVJ54gGwgSAoJkQkDcYnXpZ8cGgmROQCyhiqacGhsIkmkBsYRqmXVeMzcQDVUx8aS4wiCZHJDdErp/fjD6yTnZPd+5Z8QGgmR+QCwhXZX1czLaQDSkKFTPqeIV1ruhcs/OKiDTt/TlpvxJps/L6ERuHl+fLH7uwvpvAr+/vJn+fDfWvxJ2v8+2AZ3sG8J/md4G9V4DIRXzgPh8I5b1/D02EA1FcZi80xVGQ/58Zu73GoiGPLlN2/VFNA358Jwz78Ig8Q6IJWTNecIBG4iG7PjPNuYKoyELIVMN+wtly7Plg44pAn8hg19Es4p0sTOMfxdGQ4rw6cUHdEowhaIyzC1FQKccs6glycQS/ZlfXlZ/UpJ0Flk20CrVdBLKNp90AZ3yzSiPhJNJdIVtcZ1dSJjOIuMGWqWdmrPMc0i6gVYHX0WZ01lkD2hxwIzyp7NIfYVdqDJTXaFnWmMDrdqvokLpLIoFtGiZUbl0FiUDWqwTL11S0W5WhQNaFV1I1dNZdAhoUWUh9ehm1SegVc6SmnWzahjQantmITF1jWarc0BbbjEdIZqtowS0dfWMB6o6WitXHTGgq6hhTKWPMpAQAUFCQJAQECQEBAkBQUJAkBAQJAQECQFBQkCQEBAkBATJHwI0i6oCTPH/AAAAAElFTkSuQmCC">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --primary:#388e3c;
+    --accent:#66bb6a;
+    --gold:#c9a35a;
+    --bg:#f6f4ee;
+    --surface:#ffffff;
+    --surface-2:#eef1e9;
+    --text:#1b2419;
+    --text-soft:#54604f;
+    --border:#dfe3d8;
+    --shadow: 0 10px 30px rgba(27,36,25,.08);
+    --radius-card:18px;
+    --radius-btn:50px;
+    --font-display:'Fraunces', serif;
+    --font-body:'Karla', sans-serif;
+  }
+  [data-theme="dark"]{
+    --bg:#10160f;
+    --surface:#171f15;
+    --surface-2:#1e281b;
+    --text:#eef1e9;
+    --text-soft:#a9b6a2;
+    --border:#2a3525;
+    --shadow: 0 10px 30px rgba(0,0,0,.4);
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color: rgba(0,0,0,0);}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--font-body);
+    transition:background .3s ease, color .3s ease;
+    min-height:100vh;
+  }
+  button, .clickable{ cursor:pointer; touch-action: manipulation; font-family:inherit; }
+  h1,h2,h3,h4{ font-family:var(--font-display); margin:0; font-weight:600; }
+  p{margin:0;}
+  input, textarea, select{
+    font-family:var(--font-body);
+    background:var(--surface-2);
+    border:1px solid var(--border);
+    color:var(--text);
+    border-radius:12px;
+    padding:10px 14px;
+    font-size:15px;
+    outline:none;
+    width:100%;
+  }
+  input:focus, textarea:focus, select:focus{ border-color:var(--primary); }
+  ::placeholder{ color:var(--text-soft); opacity:.8; }
+
+  /* ---------- WELCOME ---------- */
+  #welcome{
+    position:fixed; inset:0; z-index:999;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(102,187,106,.25), transparent 45%),
+      radial-gradient(circle at 80% 80%, rgba(56,142,60,.3), transparent 50%),
+      linear-gradient(160deg, #0f1710, #17251a 60%, #0f1710);
+    display:flex; align-items:center; justify-content:center; flex-direction:column;
+    padding:32px; text-align:center;
+    transition:opacity .5s ease, visibility .5s ease;
+  }
+  #welcome.hide{ opacity:0; visibility:hidden; pointer-events:none; }
+  .welcome-badge{
+    color:var(--gold); font-family:var(--font-body); letter-spacing:.5px;
+    font-size:13px; margin-bottom:18px; opacity:0; animation:riseIn .8s ease forwards .1s;
+  }
+  .welcome-title{
+    color:#f4f1e8; font-size:clamp(34px,7vw,58px); line-height:1.05; max-width:780px;
+    opacity:0; animation:riseIn .9s ease forwards .3s;
+  }
+  .welcome-quote{
+    color:#c7d6c2; font-size:clamp(15px,2.4vw,19px); max-width:520px; margin-top:22px; line-height:1.6;
+    font-style:italic; opacity:0; animation:riseIn .9s ease forwards .55s;
+  }
+  @keyframes riseIn{ from{opacity:0; transform:translateY(16px);} to{opacity:1; transform:translateY(0);} }
+  #btnEnter{
+    margin-top:36px;
+    background:linear-gradient(135deg, var(--accent), var(--primary));
+    color:#fff; border:none; border-radius:var(--radius-btn);
+    padding:16px 40px; font-size:16px; font-weight:700; letter-spacing:.3px;
+    box-shadow:0 12px 28px rgba(56,142,60,.35);
+    min-height:52px;
+  }
+  #btnEnter:active{ transform:scale(.97); }
+  .email-capture{
+    margin-top:28px; display:flex; flex-direction:column; gap:8px; align-items:center;
+    opacity:0; animation:riseIn .9s ease forwards .75s; width:100%; max-width:320px;
+  }
+  .email-capture label{ color:#c7d6c2; font-size:13px; font-weight:600; }
+  .email-capture input{
+    width:100%; text-align:center; background:rgba(255,255,255,.08); border:1.5px solid rgba(255,255,255,.25);
+    color:#f4f1e8; border-radius:var(--radius-btn); padding:13px 18px; font-size:15px; min-height:48px;
+  }
+  .email-capture input::placeholder{ color:rgba(244,241,232,.5); }
+  .email-capture input:focus{ border-color:var(--accent); background:rgba(255,255,255,.12); }
+
+  /* ---------- APP SHELL ---------- */
+  #app{ display:none; }
+  #app.show{ display:block; }
+
+  .layout{ display:flex; min-height:100vh; }
+
+  .sidebar{
+    width:250px; flex-shrink:0; background:var(--surface);
+    border-right:1px solid var(--border); padding:24px 16px;
+    display:flex; flex-direction:column; gap:6px;
+    position:sticky; top:0; height:100vh; overflow-y:auto;
+  }
+  .brand{ padding:6px 10px 22px; }
+  .brand h1{ font-size:20px; color:var(--primary); line-height:1.2; }
+  .brand span{ font-size:12px; color:var(--text-soft); }
+
+  .navbtn{
+    display:flex; align-items:center; gap:12px;
+    background:transparent; border:none; text-align:left;
+    padding:12px 14px; border-radius:14px; color:var(--text);
+    font-size:15px; font-weight:600; min-height:48px;
+  }
+  .navbtn .ic{ font-size:19px; width:22px; text-align:center; }
+  .navbtn.active{ background:var(--surface-2); color:var(--primary); }
+  .navbtn:hover{ background:var(--surface-2); }
+
+  .sidebar-foot{ margin-top:auto; padding-top:14px; border-top:1px solid var(--border); }
+
+  .themebtn{
+    width:100%; display:flex; align-items:center; justify-content:center; gap:8px;
+    background:var(--surface-2); border:1px solid var(--border); border-radius:var(--radius-btn);
+    padding:12px; min-height:48px; font-weight:700; color:var(--text); font-size:14px;
+  }
+
+  main{ flex:1; padding:28px 34px 90px; max-width:1100px; }
+
+  .progress-wrap{
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-card);
+    padding:16px 20px; margin-bottom:22px; box-shadow:var(--shadow);
+  }
+  .progress-top{ display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
+  .progress-top h4{ font-size:14px; color:var(--text-soft); font-weight:600; }
+  .progress-top b{ color:var(--primary); font-size:14px; }
+  .progress-bar-bg{ height:8px; background:var(--surface-2); border-radius:20px; overflow:hidden; }
+  .progress-bar-fill{ height:100%; background:linear-gradient(90deg, var(--primary), var(--accent)); border-radius:20px; transition:width .5s ease; }
+
+  .section{ display:none; animation:fadeSec .35s ease; }
+  .section.active{ display:block; }
+  @keyframes fadeSec{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);} }
+
+  .section-head{ margin-bottom:20px; }
+  .section-head h2{ font-size:26px; }
+  .section-head p{ color:var(--text-soft); margin-top:6px; font-size:14.5px; }
+
+  .card{
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-card);
+    padding:20px; box-shadow:var(--shadow); margin-bottom:16px;
+  }
+  .card h3{ font-size:17px; margin-bottom:12px; }
+
+  .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .grid3{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; }
+  @media(max-width:640px){ .grid2,.grid3{ grid-template-columns:1fr; } }
+
+  .field{ margin-bottom:12px; }
+  .field label{ display:block; font-size:12.5px; font-weight:700; color:var(--text-soft); margin-bottom:5px; }
+
+  .btn{
+    border:none; border-radius:var(--radius-btn); padding:13px 26px; font-weight:700; font-size:14.5px;
+    min-height:48px; display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  }
+  .btn-primary{ background:linear-gradient(135deg, var(--accent), var(--primary)); color:#fff; }
+  .btn-outline{ background:transparent; border:1.5px solid var(--primary); color:var(--primary); }
+  .btn-ghost{ background:var(--surface-2); color:var(--text); }
+  .btn-danger{ background:transparent; border:1.5px solid #c0524a; color:#c0524a; }
+  .btn:active{ transform:scale(.97); }
+  .btn-row{ display:flex; gap:10px; flex-wrap:wrap; }
+
+  .chip{
+    display:inline-flex; align-items:center; gap:6px; padding:7px 14px; border-radius:var(--radius-btn);
+    background:var(--surface-2); border:1px solid var(--border); font-size:13.5px; font-weight:700; margin:0 8px 8px 0;
+    min-height:36px;
+  }
+  .chip.active{ background:var(--primary); color:#fff; border-color:var(--primary); }
+
+  table{ width:100%; border-collapse:collapse; font-size:14px; }
+  th{ text-align:left; color:var(--text-soft); font-size:12px; text-transform:none; font-weight:700; padding:8px 10px; border-bottom:2px solid var(--border); }
+  td{ padding:9px 10px; border-bottom:1px solid var(--border); vertical-align:middle; }
+  tr:last-child td{ border-bottom:none; }
+  .tbl-wrap{ overflow-x:auto; }
+  .badge{ padding:4px 10px; border-radius:20px; font-size:12px; font-weight:700; }
+  .badge-ok{ background:rgba(102,187,106,.18); color:var(--primary); }
+  .badge-warn{ background:rgba(201,163,90,.2); color:var(--gold); }
+  .badge-bad{ background:rgba(192,82,74,.18); color:#c0524a; }
+
+  .empty{
+    text-align:center; padding:40px 20px; color:var(--text-soft);
+  }
+  .empty .ic{ font-size:34px; margin-bottom:10px; }
+
+  .icon-btn{ background:var(--surface-2); border:1px solid var(--border); border-radius:10px; padding:6px 10px; min-height:36px; font-size:13px; font-weight:700; color:var(--text); }
+  .icon-btn.danger{ color:#c0524a; }
+
+  .studentcard{ border:1px solid var(--border); border-radius:14px; padding:14px; margin-bottom:10px; background:var(--surface-2); }
+  .studentcard-top{ display:flex; justify-content:space-between; align-items:flex-start; gap:10px; flex-wrap:wrap; }
+  .studentcard-name{ font-weight:700; font-size:15.5px; }
+  .studentcard-meta{ font-size:12.5px; color:var(--text-soft); margin-top:2px; }
+  .notas-grid{ display:grid; grid-template-columns:repeat(5,1fr); gap:8px; margin-top:12px; }
+  @media(max-width:640px){ .notas-grid{ grid-template-columns:repeat(3,1fr); } }
+  .nota-field label{ display:block; font-size:10.5px; font-weight:700; color:var(--text-soft); margin-bottom:4px; line-height:1.2; min-height:24px; }
+  .nota-field input{ padding:8px 10px; font-size:14px; text-align:center; background:var(--surface); }
+  .final-row{ display:flex; align-items:flex-end; gap:16px; margin-top:12px; padding-top:12px; border-top:1px dashed var(--border); flex-wrap:wrap; }
+  .final-row .nota-field{ width:120px; }
+  .final-row .nota-field input{ background:var(--surface-2); font-weight:800; border-color:var(--primary); }
+  .prom-sugerido{ font-size:13px; color:var(--text-soft); padding-bottom:9px; }
+  .final-avg{ margin-top:10px; font-size:14px; font-weight:800; }
+
+  .checklist-item{ display:flex; align-items:center; gap:12px; padding:12px 6px; border-bottom:1px solid var(--border); }
+  .checklist-item:last-child{ border-bottom:none; }
+  .checkbox{
+    width:24px; height:24px; border-radius:7px; border:2px solid var(--primary); flex-shrink:0;
+    display:flex; align-items:center; justify-content:center; font-size:14px; color:#fff; font-weight:900;
+    min-height:24px;
+  }
+  .checkbox.checked{ background:var(--primary); }
+  .checklist-text{ flex:1; font-size:14.5px; }
+  .checklist-text.done{ text-decoration:line-through; color:var(--text-soft); }
+
+  .calendar-grid{ display:grid; grid-template-columns:repeat(7,1fr); gap:6px; margin-top:14px; }
+  .cal-dow{ text-align:center; font-size:11.5px; font-weight:800; color:var(--text-soft); padding-bottom:4px; }
+  .cal-day{
+    background:var(--surface-2); border:1px solid var(--border); border-radius:10px; min-height:64px;
+    padding:6px; font-size:12.5px; position:relative; text-align:left;
+  }
+  .cal-day.empty-day{ background:transparent; border:none; }
+  .cal-day.has-note{ border-color:var(--primary); }
+  .cal-day .num{ font-weight:800; font-size:12.5px; }
+  .cal-day .dot{ width:6px; height:6px; border-radius:50%; background:var(--primary); position:absolute; bottom:6px; right:6px; }
+  .cal-day.today{ box-shadow:0 0 0 2px var(--primary) inset; }
+
+  .journal-entry{ border-left:3px solid var(--gold); padding:10px 14px; background:var(--surface-2); border-radius:0 12px 12px 0; margin-bottom:10px; }
+  .journal-entry .je-date{ font-size:11.5px; color:var(--text-soft); font-weight:700; margin-bottom:4px; }
+
+  .calc-display{
+    background:var(--surface-2); border-radius:14px; padding:16px; text-align:right; font-size:30px; font-weight:800;
+    margin-bottom:12px; word-break:break-all; min-height:44px; font-family:var(--font-display);
+  }
+  .calc-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:8px; }
+  .calc-key{ background:var(--surface-2); border:1px solid var(--border); border-radius:12px; padding:14px; font-size:17px; font-weight:800; min-height:52px; }
+  .calc-key.op{ background:var(--primary); color:#fff; border-color:var(--primary); }
+  .calc-key.eq{ background:linear-gradient(135deg, var(--accent), var(--primary)); color:#fff; grid-column: span 2; }
+  .calc-mode-tabs{ display:flex; gap:8px; margin-bottom:14px; flex-wrap:wrap; }
+
+  .quote-highlight{ border-left:4px solid var(--gold); padding:12px 16px; background:var(--surface-2); border-radius:0 12px 12px 0; font-style:italic; font-family:var(--font-display); font-size:16px; margin-bottom:14px; }
+
+  .toast{
+    position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(20px);
+    background:var(--text); color:var(--bg); padding:13px 24px; border-radius:var(--radius-btn);
+    font-weight:700; font-size:14px; opacity:0; transition:all .3s ease; z-index:1200; pointer-events:none;
+    box-shadow:0 10px 24px rgba(0,0,0,.25);
+  }
+  .toast.show{ opacity:1; transform:translateX(-50%) translateY(0); }
+
+  /* Bottom nav mobile */
+  .bottomnav{
+    display:none; position:fixed; bottom:0; left:0; right:0; background:var(--surface);
+    border-top:1px solid var(--border); z-index:200; padding:6px 4px calc(6px + env(safe-area-inset-bottom));
+    justify-content:space-between; overflow-x:auto; gap:2px;
+  }
+  .bottomnav .navbtn{ flex-direction:column; gap:3px; font-size:10px; padding:7px 6px; min-width:58px; text-align:center; border-radius:12px; flex-shrink:0; }
+  .bottomnav .navbtn .ic{ font-size:19px; }
+
+  @media(max-width:900px){
+    .sidebar{ display:none; }
+    main{ padding:20px 16px 100px; }
+    .bottomnav{ display:flex; }
+  }
+
+  .top-mobile-bar{ display:none; align-items:center; justify-content:space-between; padding:14px 16px; background:var(--surface); border-bottom:1px solid var(--border); position:sticky; top:0; z-index:150; }
+  .top-mobile-bar h1{ font-size:17px; color:var(--primary); }
+  @media(max-width:900px){ .top-mobile-bar{ display:flex; } }
+
+  .modal-bg{ position:fixed; inset:0; background:rgba(10,14,9,.55); display:none; align-items:center; justify-content:center; z-index:500; padding:20px; }
+  .modal-bg.show{ display:flex; }
+  .modal{ background:var(--surface); border-radius:20px; padding:24px; max-width:420px; width:100%; box-shadow:var(--shadow); max-height:85vh; overflow-y:auto; }
+  .modal h3{ margin-bottom:14px; }
+
+  .fab{
+    position:fixed; bottom:90px; right:22px; width:56px; height:56px; border-radius:50%;
+    background:linear-gradient(135deg, var(--accent), var(--primary)); color:#fff; border:none;
+    font-size:26px; box-shadow:0 10px 24px rgba(56,142,60,.4); z-index:180; display:none;
+  }
+  @media(max-width:900px){ .fab.show-mobile{ display:flex; align-items:center; justify-content:center; } }
+</style>
+</head>
+<body>
+
+<!-- ===================== WELCOME ===================== -->
+<div id="welcome">
+  <div class="welcome-badge">MARIELIS · ORGANIZACIÓN DOCENTE</div>
+  <h1 class="welcome-title">Planillas y Organización Escolar</h1>
+  <p class="welcome-quote" id="welcomeSubtitle">Cada nota, cada alumno y cada fecha en un solo lugar, sin depender de internet.</p>
+
+  <div id="emailCaptureWrap" class="email-capture">
+    <label for="inputEmailDocente">Ingresá tu correo electrónico para comenzar</label>
+    <input type="email" id="inputEmailDocente" placeholder="tuemail@ejemplo.com" autocomplete="email">
+  </div>
+
+  <button id="btnEnter" class="clickable" onclick="enterApp()">Entrar a mi planilla</button>
+</div>
+
+<!-- ===================== APP ===================== -->
+<div id="app">
+  <div class="top-mobile-bar">
+    <h1>Planillas Escolares</h1>
+    <button class="icon-btn" onclick="toggleTheme()" id="themeBtnMobile">🌙</button>
+  </div>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brand">
+        <h1>Planillas<br>Escolares</h1>
+        <span>by MARIELIS</span>
+      </div>
+      <button class="navbtn clickable" data-sec="inicio" onclick="goSection('inicio')"><span class="ic">🏠</span>Inicio</button>
+      <button class="navbtn clickable" data-sec="materias" onclick="goSection('materias')"><span class="ic">📚</span>Materias</button>
+      <button class="navbtn clickable" data-sec="alumnos" onclick="goSection('alumnos')"><span class="ic">🧑‍🎓</span>Alumnos y notas</button>
+      <button class="navbtn clickable" data-sec="examenes" onclick="goSection('examenes')"><span class="ic">📝</span>Cronograma exámenes</button>
+      <button class="navbtn clickable" data-sec="calendario" onclick="goSection('calendario')"><span class="ic">📅</span>Calendario</button>
+      <button class="navbtn clickable" data-sec="diario" onclick="goSection('diario')"><span class="ic">📔</span>Notas y reuniones</button>
+      <button class="navbtn clickable" data-sec="checklist" onclick="goSection('checklist')"><span class="ic">✅</span>Checklist</button>
+      <button class="navbtn clickable" data-sec="calculadora" onclick="goSection('calculadora')"><span class="ic">🧮</span>Calculadora</button>
+      <button class="navbtn clickable" data-sec="seguimiento" onclick="goSection('seguimiento')"><span class="ic">📊</span>Seguimiento</button>
+      <div class="sidebar-foot">
+        <button class="themebtn clickable" onclick="toggleTheme()" id="themeBtnDesktop">🌙 Modo noche</button>
+      </div>
+    </aside>
+
+    <main>
+      <div class="progress-wrap">
+        <div class="progress-top">
+          <h4>Progreso general de tu planilla</h4>
+          <b id="progressPct">0%</b>
+        </div>
+        <div class="progress-bar-bg"><div class="progress-bar-fill" id="progressBar" style="width:0%"></div></div>
+      </div>
+
+      <!-- INICIO -->
+      <section class="section" id="sec-inicio">
+        <div class="section-head" style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap">
+          <div>
+            <h2 id="inicioBienvenida">Bienvenida/o</h2>
+            <p>Un resumen rápido de tu año escolar. Todo se guarda en este dispositivo, sin necesitar internet.</p>
+            <p style="font-size:12.5px;color:var(--text-soft);margin-top:6px">
+              Sesión: <b id="inicioEmail">—</b> ·
+              <button class="icon-btn clickable" style="margin-left:6px" onclick="openEmailModal()">✏️ Cambiar correo</button>
+            </p>
+          </div>
+        </div>
+        <div class="quote-highlight">"Organizar el aula empieza por organizar los números: cada nota bien registrada es una decisión pedagógica más clara."</div>
+        <div class="grid3">
+          <div class="card">
+            <h3>📚 Materias cargadas</h3>
+            <p style="font-size:32px;font-weight:800;color:var(--primary)" id="statMaterias">0</p>
+            <p style="color:var(--text-soft);font-size:13px">de 10 disponibles</p>
+          </div>
+          <div class="card">
+            <h3>🧑‍🎓 Alumnos totales</h3>
+            <p style="font-size:32px;font-weight:800;color:var(--primary)" id="statAlumnos">0</p>
+            <p style="color:var(--text-soft);font-size:13px">máximo 50 por materia</p>
+          </div>
+          <div class="card">
+            <h3>📝 Exámenes agendados</h3>
+            <p style="font-size:32px;font-weight:800;color:var(--primary)" id="statExamenes">0</p>
+            <p style="color:var(--text-soft);font-size:13px">en el cronograma</p>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Accesos rápidos</h3>
+          <div class="btn-row">
+            <button class="btn btn-primary clickable" onclick="goSection('materias')">➕ Cargar materia</button>
+            <button class="btn btn-outline clickable" onclick="goSection('alumnos')">🧑‍🎓 Cargar notas</button>
+            <button class="btn btn-outline clickable" onclick="goSection('examenes')">📝 Agendar examen</button>
+            <button class="btn btn-outline clickable" onclick="goSection('calculadora')">🧮 Abrir calculadora</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- MATERIAS -->
+      <section class="section" id="sec-materias">
+        <div class="section-head">
+          <h2>Materias</h2>
+          <p>Cargá hasta 10 materias. Cada una tiene su propia planilla de alumnos y notas.</p>
+        </div>
+        <div class="card">
+          <h3>Nueva materia</h3>
+          <div class="grid2">
+            <div class="field">
+              <label>Nombre de la materia</label>
+              <input type="text" id="inpMateriaNombre" placeholder="Ej: Matemática">
+            </div>
+            <div class="field">
+              <label>Nivel</label>
+              <select id="inpMateriaNivel">
+                <option>Primario</option>
+                <option>Secundario</option>
+                <option>Terciario</option>
+              </select>
+            </div>
+          </div>
+          <button class="btn btn-primary clickable" onclick="addMateria()">➕ Agregar materia</button>
+        </div>
+        <div id="listaMaterias"></div>
+      </section>
+
+      <!-- ALUMNOS -->
+      <section class="section" id="sec-alumnos">
+        <div class="section-head">
+          <h2>Alumnos y notas</h2>
+          <p>Elegí una materia para cargar alumnos: actitudinal, 5 trabajos prácticos, parcial, trimestral, recuperatorio y nota final.</p>
+        </div>
+        <div class="card">
+          <h3>Materia activa</h3>
+          <div id="materiaSelectorAlumnos" class="btn-row"></div>
+        </div>
+        <div id="panelAlumnos"></div>
+      </section>
+
+      <!-- EXAMENES -->
+      <section class="section" id="sec-examenes">
+        <div class="section-head">
+          <h2>Cronograma de exámenes</h2>
+          <p>Registrá fecha, materia y nota general de cada instancia evaluativa.</p>
+        </div>
+        <div class="card">
+          <h3>Nuevo examen</h3>
+          <div class="grid3">
+            <div class="field">
+              <label>Materia</label>
+              <select id="inpExMateria"></select>
+            </div>
+            <div class="field">
+              <label>Fecha</label>
+              <input type="date" id="inpExFecha">
+            </div>
+            <div class="field">
+              <label>Tema / Nombre del examen</label>
+              <input type="text" id="inpExTema" placeholder="Ej: Parcial 1 - Unidad 3">
+            </div>
+          </div>
+          <button class="btn btn-primary clickable" onclick="addExamen()">➕ Agendar examen</button>
+        </div>
+        <div class="card">
+          <h3>Exámenes agendados</h3>
+          <div class="tbl-wrap">
+            <table id="tablaExamenes">
+              <thead><tr><th>Fecha</th><th>Materia</th><th>Tema</th><th>Estado</th><th></th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+          <div class="empty" id="emptyExamenes" style="display:none">
+            <div class="ic">📝</div>
+            <p>Todavía no agendaste exámenes.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CALENDARIO -->
+      <section class="section" id="sec-calendario">
+        <div class="section-head">
+          <h2>Calendario escolar</h2>
+          <p>Anotá reuniones, entregas y actividades importantes en el día que corresponda.</p>
+        </div>
+        <div class="card">
+          <div class="btn-row" style="justify-content:space-between;align-items:center;margin-bottom:6px">
+            <button class="icon-btn clickable" onclick="calMonthShift(-1)">← Mes anterior</button>
+            <h3 id="calMonthLabel"></h3>
+            <button class="icon-btn clickable" onclick="calMonthShift(1)">Mes siguiente →</button>
+          </div>
+          <div class="calendar-grid" id="calDows"></div>
+          <div class="calendar-grid" id="calGrid"></div>
+        </div>
+      </section>
+
+      <!-- DIARIO / NOTAS -->
+      <section class="section" id="sec-diario">
+        <div class="section-head">
+          <h2>Notas para reuniones y actividades</h2>
+          <p>Un espacio libre para anotar todo lo importante: reuniones de padres, actos, entregas de boletines.</p>
+        </div>
+        <div class="card">
+          <h3>Nueva nota</h3>
+          <div class="field">
+            <label>Título</label>
+            <input type="text" id="inpNotaTitulo" placeholder="Ej: Reunión de padres 3ºB">
+          </div>
+          <div class="field">
+            <label>Detalle</label>
+            <textarea id="inpNotaTexto" rows="3" placeholder="Escribí acá los detalles..."></textarea>
+          </div>
+          <button class="btn btn-primary clickable" onclick="addNota()">📔 Guardar nota</button>
+        </div>
+        <div id="listaNotas"></div>
+      </section>
+
+      <!-- CHECKLIST -->
+      <section class="section" id="sec-checklist">
+        <div class="section-head">
+          <h2>Checklist de tareas</h2>
+          <p>Marcá lo que ya hiciste: carga de notas, entrega de planillas, reuniones, y más.</p>
+        </div>
+        <div class="card">
+          <div class="btn-row" style="margin-bottom:14px">
+            <input type="text" id="inpCheckNuevo" placeholder="Nueva tarea..." style="flex:1;min-width:180px">
+            <button class="btn btn-primary clickable" onclick="addCheck()">➕ Agregar</button>
+          </div>
+          <div id="checklistWrap"></div>
+        </div>
+      </section>
+
+      <!-- CALCULADORA -->
+      <section class="section" id="sec-calculadora">
+        <div class="section-head">
+          <h2>Calculadora</h2>
+          <p>Calculá operaciones simples o el promedio de una lista de notas.</p>
+        </div>
+        <div class="card">
+          <div class="calc-mode-tabs">
+            <button class="chip active clickable" id="tabCalc" onclick="setCalcMode('calc')">🧮 Calculadora</button>
+            <button class="chip clickable" id="tabProm" onclick="setCalcMode('prom')">📐 Promedio de notas</button>
+          </div>
+
+          <div id="calcModeCalc">
+            <div class="calc-display" id="calcDisplay">0</div>
+            <div class="calc-grid">
+              <button class="calc-key clickable" onclick="calcInput('C')">C</button>
+              <button class="calc-key clickable" onclick="calcInput('del')">⌫</button>
+              <button class="calc-key clickable" onclick="calcInput('%')">%</button>
+              <button class="calc-key op clickable" onclick="calcInput('/')">÷</button>
+
+              <button class="calc-key clickable" onclick="calcInput('7')">7</button>
+              <button class="calc-key clickable" onclick="calcInput('8')">8</button>
+              <button class="calc-key clickable" onclick="calcInput('9')">9</button>
+              <button class="calc-key op clickable" onclick="calcInput('*')">×</button>
+
+              <button class="calc-key clickable" onclick="calcInput('4')">4</button>
+              <button class="calc-key clickable" onclick="calcInput('5')">5</button>
+              <button class="calc-key clickable" onclick="calcInput('6')">6</button>
+              <button class="calc-key op clickable" onclick="calcInput('-')">−</button>
+
+              <button class="calc-key clickable" onclick="calcInput('1')">1</button>
+              <button class="calc-key clickable" onclick="calcInput('2')">2</button>
+              <button class="calc-key clickable" onclick="calcInput('3')">3</button>
+              <button class="calc-key op clickable" onclick="calcInput('+')">+</button>
+
+              <button class="calc-key clickable" onclick="calcInput('0')" style="grid-column:span 2">0</button>
+              <button class="calc-key clickable" onclick="calcInput('.')">.</button>
+              <button class="calc-key eq clickable" onclick="calcInput('=')">=</button>
+            </div>
+          </div>
+
+          <div id="calcModeProm" style="display:none">
+            <div class="field">
+              <label>Notas separadas por coma (ej: 8, 7, 9.5, 6)</label>
+              <textarea id="inpNotasProm" rows="2" placeholder="8, 7, 9.5, 6"></textarea>
+            </div>
+            <button class="btn btn-primary clickable" onclick="calcPromedio()">Calcular promedio</button>
+            <div class="calc-display" id="promDisplay" style="margin-top:14px">—</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEGUIMIENTO -->
+      <section class="section" id="sec-seguimiento">
+        <div class="section-head">
+          <h2>Seguimiento</h2>
+          <p>Un vistazo general a tu avance: tareas completadas, notas cargadas y próximos exámenes.</p>
+        </div>
+        <div class="grid3">
+          <div class="card">
+            <h3>✅ Tareas completadas</h3>
+            <p style="font-size:30px;font-weight:800;color:var(--primary)" id="segCheck">0%</p>
+          </div>
+          <div class="card">
+            <h3>🧑‍🎓 Alumnos con nota final</h3>
+            <p style="font-size:30px;font-weight:800;color:var(--primary)" id="segNotas">0%</p>
+          </div>
+          <div class="card">
+            <h3>📅 Próximo examen</h3>
+            <p style="font-size:16px;font-weight:800;color:var(--primary)" id="segProximo">Sin exámenes</p>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Actividad reciente</h3>
+          <div id="segLog"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <nav class="bottomnav">
+    <button class="navbtn clickable" data-sec="inicio" onclick="goSection('inicio')"><span class="ic">🏠</span>Inicio</button>
+    <button class="navbtn clickable" data-sec="materias" onclick="goSection('materias')"><span class="ic">📚</span>Materias</button>
+    <button class="navbtn clickable" data-sec="alumnos" onclick="goSection('alumnos')"><span class="ic">🧑‍🎓</span>Alumnos</button>
+    <button class="navbtn clickable" data-sec="examenes" onclick="goSection('examenes')"><span class="ic">📝</span>Exámenes</button>
+    <button class="navbtn clickable" data-sec="calendario" onclick="goSection('calendario')"><span class="ic">📅</span>Calendario</button>
+    <button class="navbtn clickable" data-sec="diario" onclick="goSection('diario')"><span class="ic">📔</span>Notas</button>
+    <button class="navbtn clickable" data-sec="checklist" onclick="goSection('checklist')"><span class="ic">✅</span>Checklist</button>
+    <button class="navbtn clickable" data-sec="calculadora" onclick="goSection('calculadora')"><span class="ic">🧮</span>Calc.</button>
+    <button class="navbtn clickable" data-sec="seguimiento" onclick="goSection('seguimiento')"><span class="ic">📊</span>Progreso</button>
+  </nav>
+</div>
+
+<!-- MODAL alumno -->
+<div class="modal-bg" id="modalAlumno">
+  <div class="modal">
+    <h3>Nuevo alumno</h3>
+    <div class="field"><label>Nombre completo</label><input type="text" id="inpAlNombre" placeholder="Nombre y apellido"></div>
+    <div class="grid2">
+      <div class="field"><label>N° de libro</label><input type="text" id="inpAlLibro" placeholder="Ej: 2"></div>
+      <div class="field"><label>N° de folio</label><input type="text" id="inpAlFolio" placeholder="Ej: 34"></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary clickable" onclick="saveAlumno()">Guardar alumno</button>
+      <button class="btn btn-ghost clickable" onclick="closeModal('modalAlumno')">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- MODAL dia calendario -->
+<div class="modal-bg" id="modalDia">
+  <div class="modal">
+    <h3 id="modalDiaTitulo">Día</h3>
+    <div class="field"><label>Nota para este día</label><textarea id="inpDiaTexto" rows="3" placeholder="Ej: Reunión de personal a las 14hs"></textarea></div>
+    <div class="btn-row">
+      <button class="btn btn-primary clickable" onclick="saveDia()">Guardar</button>
+      <button class="btn btn-danger clickable" onclick="deleteDia()">Borrar nota</button>
+      <button class="btn btn-ghost clickable" onclick="closeModal('modalDia')">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL cambiar correo -->
+<div class="modal-bg" id="modalEmail">
+  <div class="modal">
+    <h3>Cambiar correo electrónico</h3>
+    <div class="field">
+      <label>Nuevo correo</label>
+      <input type="email" id="inpCambioEmail" placeholder="tuemail@ejemplo.com">
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary clickable" onclick="saveEmailChange()">Guardar</button>
+      <button class="btn btn-ghost clickable" onclick="closeModal('modalEmail')">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ===================== STORAGE HELPERS ===================== */
+function loadData(key, fallback){
+  try{
+    const raw = localStorage.getItem(key);
+    return raw ? JSON.parse(raw) : fallback;
+  }catch(e){ return fallback; }
+}
+function saveData(key, value){
+  try{ localStorage.setItem(key, JSON.stringify(value)); }catch(e){}
+}
+
+let state = {
+  materias: loadData('app_marielis_materias', []),      // {id,nombre,nivel,alumnos:[]}
+  examenes: loadData('app_marielis_examenes', []),       // {id,materiaId,fecha,tema,rendido}
+  notasDiario: loadData('app_marielis_diario', []),      // {id,titulo,texto,fecha}
+  checklist: loadData('app_marielis_checklist', [
+    {id:cryptoId(), texto:'Cargar todas las materias del ciclo lectivo', done:false},
+    {id:cryptoId(), texto:'Completar libro y folio de cada alumno', done:false},
+    {id:cryptoId(), texto:'Registrar notas del primer parcial', done:false}
+  ]),
+  calendario: loadData('app_marielis_calendario', {}),   // {"2026-3-14": "texto"}
+  tema: loadData('app_marielis_tema', 'light'),
+  activeMateriaAlumnos: loadData('app_marielis_active_materia', null),
+  log: loadData('app_marielis_log', []),
+  docenteEmail: loadData('app_marielis_email', null)
+};
+
+function cryptoId(){ return 'id'+Math.random().toString(36).slice(2,10)+Date.now().toString(36); }
+
+function persistAll(){
+  saveData('app_marielis_materias', state.materias);
+  saveData('app_marielis_examenes', state.examenes);
+  saveData('app_marielis_diario', state.notasDiario);
+  saveData('app_marielis_checklist', state.checklist);
+  saveData('app_marielis_calendario', state.calendario);
+  saveData('app_marielis_active_materia', state.activeMateriaAlumnos);
+  saveData('app_marielis_log', state.log);
+  saveData('app_marielis_email', state.docenteEmail);
+}
+
+function addLog(msg){
+  state.log.unshift({msg, fecha:new Date().toLocaleString('es-AR')});
+  state.log = state.log.slice(0,25);
+  persistAll();
+}
+
+/* ===================== CORREO / BIENVENIDA PERSONALIZADA ===================== */
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+function nombreDesdeEmail(email){
+  if(!email) return 'docente';
+  const usuario = email.split('@')[0];
+  const limpio = usuario.replace(/[._\-0-9]+/g,' ').trim();
+  if(!limpio) return email;
+  return limpio.split(' ').filter(Boolean).map(w=>w.charAt(0).toUpperCase()+w.slice(1)).join(' ');
+}
+function initWelcome(){
+  const wrap = document.getElementById('emailCaptureWrap');
+  if(state.docenteEmail){
+    wrap.style.display = 'none';
+    document.getElementById('welcomeSubtitle').textContent =
+      `¡Qué bueno verte de nuevo, ${nombreDesdeEmail(state.docenteEmail)}! Tu planilla te está esperando.`;
+    document.getElementById('btnEnter').textContent = 'Continuar con mi planilla';
+  } else {
+    wrap.style.display = 'flex';
+    document.getElementById('btnEnter').textContent = 'Entrar a mi planilla';
+  }
+}
+function renderBienvenida(){
+  const nombre = nombreDesdeEmail(state.docenteEmail);
+  document.getElementById('inicioBienvenida').textContent =
+    state.docenteEmail ? `Bienvenida/o, ${nombre}` : 'Bienvenida/o';
+  document.getElementById('inicioEmail').textContent = state.docenteEmail || 'sin correo cargado';
+}
+function openEmailModal(){
+  document.getElementById('inpCambioEmail').value = state.docenteEmail || '';
+  openModal('modalEmail');
+}
+function saveEmailChange(){
+  const email = document.getElementById('inpCambioEmail').value.trim();
+  if(!EMAIL_REGEX.test(email)){ showToast('Ingresá un correo electrónico válido'); return; }
+  state.docenteEmail = email;
+  persistAll();
+  closeModal('modalEmail');
+  renderBienvenida();
+  showToast('Correo actualizado, ¡bienvenida/o de nuevo!');
+}
+
+/* ===================== WELCOME / THEME ===================== */
+function enterApp(){
+  const wrap = document.getElementById('emailCaptureWrap');
+  const primeraVez = wrap.style.display !== 'none';
+  if(primeraVez){
+    const emailInput = document.getElementById('inputEmailDocente');
+    const email = emailInput.value.trim();
+    if(!EMAIL_REGEX.test(email)){
+      showToast('Ingresá un correo electrónico válido para continuar');
+      emailInput.focus();
+      return;
+    }
+    state.docenteEmail = email;
+    persistAll();
+  }
+  document.getElementById('welcome').classList.add('hide');
+  document.getElementById('app').classList.add('show');
+  renderAll();
+  showToast(`${primeraVez ? '¡Bienvenida/o' : '¡Qué bueno verte de nuevo'}, ${nombreDesdeEmail(state.docenteEmail)}!`);
+}
+function applyTheme(){
+  document.documentElement.setAttribute('data-theme', state.tema);
+  const label = state.tema==='dark' ? '☀️ Modo día' : '🌙 Modo noche';
+  document.getElementById('themeBtnDesktop').textContent = label;
+  document.getElementById('themeBtnMobile').textContent = state.tema==='dark' ? '☀️' : '🌙';
+}
+function toggleTheme(){
+  state.tema = state.tema === 'dark' ? 'light' : 'dark';
+  saveData('app_marielis_tema', state.tema);
+  applyTheme();
+}
+
+/* ===================== NAV ===================== */
+let currentSection = 'inicio';
+function goSection(name){
+  currentSection = name;
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.getElementById('sec-'+name).classList.add('active');
+  document.querySelectorAll('.navbtn').forEach(b=>{
+    b.classList.toggle('active', b.dataset.sec === name);
+  });
+  if(name==='alumnos') renderAlumnosSection();
+  if(name==='examenes') renderExamenes();
+  if(name==='calendario') renderCalendario();
+  if(name==='seguimiento') renderSeguimiento();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 2200);
+}
+
+/* ===================== MATERIAS ===================== */
+function addMateria(){
+  const nombre = document.getElementById('inpMateriaNombre').value.trim();
+  const nivel = document.getElementById('inpMateriaNivel').value;
+  if(!nombre){ showToast('Escribí el nombre de la materia'); return; }
+  if(state.materias.length >= 10){ showToast('Ya cargaste el máximo de 10 materias'); return; }
+  const m = { id: cryptoId(), nombre, nivel, alumnos: [] };
+  state.materias.push(m);
+  document.getElementById('inpMateriaNombre').value = '';
+  persistAll();
+  addLog('Materia agregada: '+nombre);
+  renderMaterias();
+  showToast('Materia agregada');
+}
+function deleteMateria(id){
+  if(!confirm('¿Borrar esta materia y todos sus alumnos?')) return;
+  state.materias = state.materias.filter(m=>m.id!==id);
+  if(state.activeMateriaAlumnos === id) state.activeMateriaAlumnos = null;
+  state.examenes = state.examenes.filter(e=>e.materiaId!==id);
+  persistAll();
+  renderAll();
+  showToast('Materia eliminada');
+}
+function renderMaterias(){
+  document.getElementById('statMaterias').textContent = state.materias.length;
+  const totalAlumnos = state.materias.reduce((a,m)=>a+m.alumnos.length,0);
+  document.getElementById('statAlumnos').textContent = totalAlumnos;
+
+  const wrap = document.getElementById('listaMaterias');
+  if(state.materias.length===0){
+    wrap.innerHTML = '<div class="card empty"><div class="ic">📚</div><p>Todavía no cargaste materias. Agregá la primera arriba.</p></div>';
+    return;
+  }
+  wrap.innerHTML = state.materias.map(m=>`
+    <div class="card">
+      <div class="studentcard-top">
+        <div>
+          <h3>${escapeHtml(m.nombre)}</h3>
+          <p class="studentcard-meta">${escapeHtml(m.nivel)} · ${m.alumnos.length}/50 alumnos</p>
+        </div>
+        <div class="btn-row">
+          <button class="icon-btn clickable" onclick="setActiveMateriaAndGo('${m.id}')">Ver alumnos</button>
+          <button class="icon-btn danger clickable" onclick="deleteMateria('${m.id}')">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+function setActiveMateriaAndGo(id){
+  state.activeMateriaAlumnos = id;
+  persistAll();
+  goSection('alumnos');
+}
+
+/* ===================== ALUMNOS ===================== */
+function renderAlumnosSection(){
+  const sel = document.getElementById('materiaSelectorAlumnos');
+  if(state.materias.length===0){
+    sel.innerHTML = '<p style="color:var(--text-soft)">Primero cargá una materia en la sección "Materias".</p>';
+    document.getElementById('panelAlumnos').innerHTML = '';
+    return;
+  }
+  if(!state.activeMateriaAlumnos || !state.materias.find(m=>m.id===state.activeMateriaAlumnos)){
+    state.activeMateriaAlumnos = state.materias[0].id;
+  }
+  sel.innerHTML = state.materias.map(m=>`
+    <button class="chip clickable ${m.id===state.activeMateriaAlumnos?'active':''}" onclick="switchMateriaAlumnos('${m.id}')">${escapeHtml(m.nombre)}</button>
+  `).join('');
+  renderPanelAlumnos();
+}
+function switchMateriaAlumnos(id){
+  state.activeMateriaAlumnos = id;
+  persistAll();
+  renderAlumnosSection();
+}
+function renderPanelAlumnos(){
+  const materia = state.materias.find(m=>m.id===state.activeMateriaAlumnos);
+  const panel = document.getElementById('panelAlumnos');
+  if(!materia){ panel.innerHTML=''; return; }
+
+  let studentsHtml = '';
+  if(materia.alumnos.length===0){
+    studentsHtml = '<div class="empty"><div class="ic">🧑‍🎓</div><p>Todavía no cargaste alumnos en esta materia.</p></div>';
+  }else{
+    studentsHtml = materia.alumnos.map(al=>{
+      ensureNotas(al);
+      const finalMostrada = getNotaFinalMostrada(al.notas);
+      const badgeClass = finalMostrada===null ? '' : (finalMostrada>=7 ? 'badge-ok' : (finalMostrada>=4 ? 'badge-warn':'badge-bad'));
+      return `
+      <div class="studentcard">
+        <div class="studentcard-top">
+          <div>
+            <div class="studentcard-name">${escapeHtml(al.nombre)}</div>
+            <div class="studentcard-meta">Libro ${escapeHtml(al.libro||'-')} · Folio ${escapeHtml(al.folio||'-')}</div>
+          </div>
+          <div class="btn-row">
+            <button class="icon-btn danger clickable" onclick="deleteAlumno('${materia.id}','${al.id}')">Eliminar</button>
+          </div>
+        </div>
+        ${renderNotasGrid(materia.id, al)}
+        <div class="final-avg">Nota final: <span class="badge ${badgeClass}">${finalMostrada===null?'—':finalMostrada}</span></div>
+      </div>`;
+    }).join('');
+  }
+
+  panel.innerHTML = `
+    <div class="card">
+      <div class="studentcard-top" style="margin-bottom:10px">
+        <h3>${escapeHtml(materia.nombre)} · ${materia.alumnos.length}/50 alumnos</h3>
+        <button class="btn btn-primary clickable" onclick="openAlumnoModal()">➕ Agregar alumno</button>
+      </div>
+      ${studentsHtml}
+    </div>
+  `;
+}
+function openAlumnoModal(){
+  const materia = state.materias.find(m=>m.id===state.activeMateriaAlumnos);
+  if(!materia) return;
+  if(materia.alumnos.length>=50){ showToast('Esta materia ya tiene 50 alumnos cargados'); return; }
+  document.getElementById('inpAlNombre').value='';
+  document.getElementById('inpAlLibro').value='';
+  document.getElementById('inpAlFolio').value='';
+  openModal('modalAlumno');
+}
+function saveAlumno(){
+  const materia = state.materias.find(m=>m.id===state.activeMateriaAlumnos);
+  if(!materia) return;
+  const nombre = document.getElementById('inpAlNombre').value.trim();
+  if(!nombre){ showToast('Escribí el nombre del alumno'); return; }
+  if(materia.alumnos.length>=50){ showToast('Límite de 50 alumnos alcanzado'); closeModal('modalAlumno'); return; }
+  materia.alumnos.push({
+    id: cryptoId(),
+    nombre,
+    libro: document.getElementById('inpAlLibro').value.trim(),
+    folio: document.getElementById('inpAlFolio').value.trim(),
+    notas: notasVacias()
+  });
+  persistAll();
+  addLog('Alumno agregado: '+nombre+' ('+materia.nombre+')');
+  closeModal('modalAlumno');
+  renderPanelAlumnos();
+  renderMaterias();
+  showToast('Alumno agregado');
+}
+function deleteAlumno(materiaId, alId){
+  const materia = state.materias.find(m=>m.id===materiaId);
+  if(!materia) return;
+  if(!confirm('¿Eliminar este alumno?')) return;
+  materia.alumnos = materia.alumnos.filter(a=>a.id!==alId);
+  persistAll();
+  renderPanelAlumnos();
+  renderMaterias();
+}
+
+/* ---- Categorías fijas de notas por alumno ----
+   Afectivo/actitudinal, 5 trabajos prácticos, parcial, trimestral,
+   recuperatorio (reemplaza la nota más baja entre parcial/trimestral si se carga)
+   y nota final (se sugiere automáticamente pero se puede escribir a mano). */
+const CAMPOS_NOTAS = [
+  ['afectivo','Actitudinal / Afectivo'],
+  ['tp1','TP 1'], ['tp2','TP 2'], ['tp3','TP 3'], ['tp4','TP 4'], ['tp5','TP 5'],
+  ['parcial','Parcial'],
+  ['trimestral','Trimestral'],
+  ['recuperatorio','Recuperatorio']
+];
+function notasVacias(){
+  const n = {};
+  CAMPOS_NOTAS.forEach(([k])=>{ n[k]=''; });
+  n.final = '';
+  return n;
+}
+function ensureNotas(al){
+  if(!al.notas) al.notas = notasVacias();
+  CAMPOS_NOTAS.forEach(([k])=>{ if(al.notas[k]===undefined) al.notas[k]=''; });
+  if(al.notas.final===undefined) al.notas.final='';
+}
+function calcularPromedioNotas(n){
+  const base = ['afectivo','tp1','tp2','tp3','tp4','tp5','parcial','trimestral'];
+  const valores = {};
+  base.forEach(k=>{
+    const v = parseFloat(n[k]);
+    if(!isNaN(v)) valores[k] = v;
+  });
+  const rec = parseFloat(n.recuperatorio);
+  if(!isNaN(rec)){
+    const candidatos = ['parcial','trimestral'].filter(k=>valores[k]!==undefined);
+    if(candidatos.length){
+      const peor = candidatos.reduce((a,b)=> valores[a] <= valores[b] ? a : b);
+      valores[peor] = rec;
+    } else {
+      valores.recuperatorio = rec;
+    }
+  }
+  const arr = Object.values(valores);
+  if(arr.length===0) return null;
+  return Math.round((arr.reduce((a,b)=>a+b,0)/arr.length)*100)/100;
+}
+function getNotaFinalMostrada(n){
+  const f = parseFloat(n.final);
+  if(!isNaN(f)) return f;
+  return calcularPromedioNotas(n);
+}
+function alumnoTieneNotas(al){
+  ensureNotas(al);
+  return CAMPOS_NOTAS.some(([k])=> al.notas[k]!=='' ) || al.notas.final!=='';
+}
+function updateNota(materiaId, alumnoId, key, value){
+  const materia = state.materias.find(m=>m.id===materiaId);
+  const al = materia?.alumnos.find(a=>a.id===alumnoId);
+  if(!al) return;
+  ensureNotas(al);
+  if(value!=='' ){
+    const num = parseFloat(value);
+    if(isNaN(num) || num<0 || num>10){ showToast('La nota debe estar entre 0 y 10'); renderPanelAlumnos(); return; }
+  }
+  al.notas[key] = value;
+  persistAll();
+  renderPanelAlumnos();
+  renderSeguimiento();
+}
+function renderNotasGrid(materiaId, al){
+  ensureNotas(al);
+  const n = al.notas;
+  const inputs = CAMPOS_NOTAS.map(([k,label])=>`
+    <div class="nota-field">
+      <label>${label}</label>
+      <input type="number" min="0" max="10" step="0.1" value="${n[k]}" placeholder="—"
+        onchange="updateNota('${materiaId}','${al.id}','${k}', this.value)">
+    </div>
+  `).join('');
+  const prom = calcularPromedioNotas(n);
+  return `
+    <div class="notas-grid">${inputs}</div>
+    <div class="final-row">
+      <div class="nota-field">
+        <label>Nota Final</label>
+        <input type="number" min="0" max="10" step="0.1" value="${n.final}" placeholder="${prom===null?'—':prom}"
+          onchange="updateNota('${materiaId}','${al.id}','final', this.value)">
+      </div>
+      <div class="prom-sugerido">Promedio sugerido: <b>${prom===null?'—':prom}</b></div>
+    </div>
+  `;
+}
+
+/* ===================== EXAMENES ===================== */
+function fillMateriaSelectExamen(){
+  const sel = document.getElementById('inpExMateria');
+  sel.innerHTML = state.materias.map(m=>`<option value="${m.id}">${escapeHtml(m.nombre)}</option>`).join('') || '<option value="">Sin materias</option>';
+}
+function addExamen(){
+  const materiaId = document.getElementById('inpExMateria').value;
+  const fecha = document.getElementById('inpExFecha').value;
+  const tema = document.getElementById('inpExTema').value.trim();
+  if(!materiaId){ showToast('Cargá primero una materia'); return; }
+  if(!fecha || !tema){ showToast('Completá fecha y tema'); return; }
+  state.examenes.push({id:cryptoId(), materiaId, fecha, tema, rendido:false});
+  document.getElementById('inpExTema').value='';
+  persistAll();
+  addLog('Examen agendado: '+tema);
+  renderExamenes();
+  showToast('Examen agendado');
+}
+function toggleExamen(id){
+  const ex = state.examenes.find(e=>e.id===id);
+  if(ex){ ex.rendido = !ex.rendido; persistAll(); renderExamenes(); }
+}
+function deleteExamen(id){
+  state.examenes = state.examenes.filter(e=>e.id!==id);
+  persistAll();
+  renderExamenes();
+}
+function renderExamenes(){
+  fillMateriaSelectExamen();
+  document.getElementById('statExamenes').textContent = state.examenes.length;
+  const tbody = document.querySelector('#tablaExamenes tbody');
+  const sorted = [...state.examenes].sort((a,b)=>a.fecha.localeCompare(b.fecha));
+  document.getElementById('emptyExamenes').style.display = sorted.length===0 ? 'block':'none';
+  tbody.innerHTML = sorted.map(ex=>{
+    const materia = state.materias.find(m=>m.id===ex.materiaId);
+    return `<tr>
+      <td>${formatFecha(ex.fecha)}</td>
+      <td>${materia?escapeHtml(materia.nombre):'—'}</td>
+      <td>${escapeHtml(ex.tema)}</td>
+      <td><span class="badge ${ex.rendido?'badge-ok':'badge-warn'} clickable" onclick="toggleExamen('${ex.id}')">${ex.rendido?'Rendido':'Pendiente'}</span></td>
+      <td><button class="icon-btn danger clickable" onclick="deleteExamen('${ex.id}')">✕</button></td>
+    </tr>`;
+  }).join('');
+}
+function formatFecha(f){
+  if(!f) return '—';
+  const [y,m,d] = f.split('-');
+  return `${d}/${m}/${y}`;
+}
+
+/* ===================== CALENDARIO ===================== */
+let calDate = new Date();
+function calMonthShift(n){
+  calDate.setMonth(calDate.getMonth()+n);
+  renderCalendario();
+}
+function renderCalendario(){
+  const meses = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+  const dows = ['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'];
+  document.getElementById('calMonthLabel').textContent = meses[calDate.getMonth()]+' '+calDate.getFullYear();
+  document.getElementById('calDows').innerHTML = dows.map(d=>`<div class="cal-dow">${d}</div>`).join('');
+
+  const year = calDate.getFullYear(), month = calDate.getMonth();
+  const firstDay = new Date(year, month, 1);
+  let startOffset = firstDay.getDay()-1; if(startOffset<0) startOffset=6;
+  const daysInMonth = new Date(year, month+1, 0).getDate();
+  const today = new Date();
+
+  let html = '';
+  for(let i=0;i<startOffset;i++) html += '<div class="cal-day empty-day"></div>';
+  for(let d=1; d<=daysInMonth; d++){
+    const key = `${year}-${month}-${d}`;
+    const hasNote = !!state.calendario[key];
+    const isToday = today.getFullYear()===year && today.getMonth()===month && today.getDate()===d;
+    html += `<button class="cal-day clickable ${hasNote?'has-note':''} ${isToday?'today':''}" onclick="openDia(${year},${month},${d})">
+      <div class="num">${d}</div>
+      ${hasNote?'<div class="dot"></div>':''}
+    </button>`;
+  }
+  document.getElementById('calGrid').innerHTML = html;
+}
+let diaTarget = null;
+function openDia(year,month,day){
+  diaTarget = `${year}-${month}-${day}`;
+  const meses = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  document.getElementById('modalDiaTitulo').textContent = `${day} de ${meses[month]} de ${year}`;
+  document.getElementById('inpDiaTexto').value = state.calendario[diaTarget] || '';
+  openModal('modalDia');
+}
+function saveDia(){
+  const texto = document.getElementById('inpDiaTexto').value.trim();
+  if(texto) state.calendario[diaTarget] = texto;
+  else delete state.calendario[diaTarget];
+  persistAll();
+  closeModal('modalDia');
+  renderCalendario();
+  showToast('Calendario actualizado');
+}
+function deleteDia(){
+  delete state.calendario[diaTarget];
+  persistAll();
+  closeModal('modalDia');
+  renderCalendario();
+}
+
+/* ===================== DIARIO / NOTAS ===================== */
+function addNota(){
+  const titulo = document.getElementById('inpNotaTitulo').value.trim();
+  const texto = document.getElementById('inpNotaTexto').value.trim();
+  if(!titulo && !texto){ showToast('Escribí algo para guardar'); return; }
+  state.notasDiario.unshift({id:cryptoId(), titulo, texto, fecha:new Date().toLocaleDateString('es-AR')});
+  document.getElementById('inpNotaTitulo').value='';
+  document.getElementById('inpNotaTexto').value='';
+  persistAll();
+  addLog('Nota guardada: '+(titulo||'sin título'));
+  renderNotas();
+  showToast('Nota guardada');
+}
+function deleteNota(id){
+  state.notasDiario = state.notasDiario.filter(n=>n.id!==id);
+  persistAll();
+  renderNotas();
+}
+function renderNotas(){
+  const wrap = document.getElementById('listaNotas');
+  if(state.notasDiario.length===0){
+    wrap.innerHTML = '<div class="card empty"><div class="ic">📔</div><p>Todavía no escribiste ninguna nota.</p></div>';
+    return;
+  }
+  wrap.innerHTML = state.notasDiario.map(n=>`
+    <div class="journal-entry">
+      <div class="je-date">${n.fecha}</div>
+      <b>${escapeHtml(n.titulo||'Sin título')}</b>
+      <p style="margin-top:4px">${escapeHtml(n.texto)}</p>
+      <button class="icon-btn danger clickable" style="margin-top:8px" onclick="deleteNota('${n.id}')">Eliminar</button>
+    </div>
+  `).join('');
+}
+
+/* ===================== CHECKLIST ===================== */
+function addCheck(){
+  const inp = document.getElementById('inpCheckNuevo');
+  const texto = inp.value.trim();
+  if(!texto) return;
+  state.checklist.push({id:cryptoId(), texto, done:false});
+  inp.value='';
+  persistAll();
+  renderChecklist();
+}
+function toggleCheck(id){
+  const item = state.checklist.find(c=>c.id===id);
+  if(item){ item.done = !item.done; persistAll(); renderChecklist(); }
+}
+function deleteCheck(id){
+  state.checklist = state.checklist.filter(c=>c.id!==id);
+  persistAll();
+  renderChecklist();
+}
+function renderChecklist(){
+  const wrap = document.getElementById('checklistWrap');
+  if(state.checklist.length===0){
+    wrap.innerHTML = '<div class="empty"><div class="ic">✅</div><p>Agregá tu primera tarea arriba.</p></div>';
+    return;
+  }
+  wrap.innerHTML = state.checklist.map(c=>`
+    <div class="checklist-item">
+      <button class="checkbox clickable ${c.done?'checked':''}" onclick="toggleCheck('${c.id}')">${c.done?'✓':''}</button>
+      <span class="checklist-text ${c.done?'done':''}">${escapeHtml(c.texto)}</span>
+      <button class="icon-btn danger clickable" onclick="deleteCheck('${c.id}')">✕</button>
+    </div>
+  `).join('');
+}
+
+/* ===================== CALCULADORA ===================== */
+let calcExpr = '';
+function setCalcMode(mode){
+  document.getElementById('tabCalc').classList.toggle('active', mode==='calc');
+  document.getElementById('tabProm').classList.toggle('active', mode==='prom');
+  document.getElementById('calcModeCalc').style.display = mode==='calc' ? 'block':'none';
+  document.getElementById('calcModeProm').style.display = mode==='prom' ? 'block':'none';
+}
+function calcInput(k){
+  const disp = document.getElementById('calcDisplay');
+  if(k==='C'){ calcExpr=''; }
+  else if(k==='del'){ calcExpr = calcExpr.slice(0,-1); }
+  else if(k==='='){
+    try{
+      const safe = calcExpr.replace(/[^0-9+\-*/.%() ]/g,'');
+      // eslint-disable-next-line no-eval
+      const result = Function('"use strict"; return ('+safe+')')();
+      calcExpr = String(Math.round(result*10000)/10000);
+    }catch(e){ calcExpr = 'Error'; }
+  } else {
+    calcExpr += k;
+  }
+  disp.textContent = calcExpr || '0';
+}
+function calcPromedio(){
+  const raw = document.getElementById('inpNotasProm').value;
+  const nums = raw.split(',').map(s=>parseFloat(s.trim())).filter(n=>!isNaN(n));
+  const out = document.getElementById('promDisplay');
+  if(nums.length===0){ out.textContent='—'; return; }
+  const prom = nums.reduce((a,b)=>a+b,0)/nums.length;
+  out.textContent = (Math.round(prom*100)/100)+' / 10';
+}
+
+/* ===================== SEGUIMIENTO ===================== */
+function renderSeguimiento(){
+  const doneCount = state.checklist.filter(c=>c.done).length;
+  const checkPct = state.checklist.length? Math.round(doneCount/state.checklist.length*100):0;
+  document.getElementById('segCheck').textContent = checkPct+'%';
+
+  let totalAl=0, conFinal=0;
+  state.materias.forEach(m=>m.alumnos.forEach(a=>{
+    totalAl++;
+    if(alumnoTieneNotas(a)) conFinal++;
+  }));
+  document.getElementById('segNotas').textContent = totalAl? Math.round(conFinal/totalAl*100)+'%' : '0%';
+
+  const pendientes = state.examenes.filter(e=>!e.rendido).sort((a,b)=>a.fecha.localeCompare(b.fecha));
+  document.getElementById('segProximo').textContent = pendientes.length ? formatFecha(pendientes[0].fecha)+' · '+pendientes[0].tema : 'Sin exámenes pendientes';
+
+  const logWrap = document.getElementById('segLog');
+  logWrap.innerHTML = state.log.length ? state.log.slice(0,10).map(l=>`
+    <div class="journal-entry"><div class="je-date">${l.fecha}</div>${escapeHtml(l.msg)}</div>
+  `).join('') : '<p style="color:var(--text-soft)">Sin actividad registrada todavía.</p>';
+}
+
+/* ===================== PROGRESS GENERAL ===================== */
+function updateProgress(){
+  const totalSteps = 6;
+  let done = 0;
+  if(state.materias.length>0) done++;
+  if(state.materias.some(m=>m.alumnos.length>0)) done++;
+  if(state.materias.some(m=>m.alumnos.some(a=>alumnoTieneNotas(a)))) done++;
+  if(state.examenes.length>0) done++;
+  if(state.notasDiario.length>0) done++;
+  if(state.checklist.some(c=>c.done)) done++;
+  const pct = Math.round(done/totalSteps*100);
+  document.getElementById('progressPct').textContent = pct+'%';
+  document.getElementById('progressBar').style.width = pct+'%';
+}
+
+/* ===================== MODALES ===================== */
+function openModal(id){ document.getElementById(id).classList.add('show'); }
+function closeModal(id){ document.getElementById(id).classList.remove('show'); }
+
+/* ===================== UTILS ===================== */
+function escapeHtml(str){
+  if(str===undefined || str===null) return '';
+  return String(str)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#039;');
+}
+
+/* ===================== RENDER ALL ===================== */
+function renderAll(){
+  applyTheme();
+  renderBienvenida();
+  renderMaterias();
+  renderAlumnosSection();
+  renderExamenes();
+  renderCalendario();
+  renderNotas();
+  renderChecklist();
+  renderSeguimiento();
+  updateProgress();
+  goSection('inicio');
+}
+
+// re-render progress after any state change (light hook)
+const _persistAllOrig = persistAll;
+persistAll = function(){ _persistAllOrig(); updateProgress(); };
+
+applyTheme();
+initWelcome();
+
+/* ===================== PWA: registro del Service Worker ===================== */
+/* Este es el único archivo que TIENE que existir aparte, en la raíz del sitio,
+   junto al index.html. Los navegadores no permiten registrar un service worker
+   embebido dentro del HTML por seguridad. */
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('./service-worker.js', { scope: './' })
+      .then(function (reg) {
+        console.log('Service worker registrado correctamente. Scope:', reg.scope);
+      })
+      .catch(function (err) {
+        console.error('No se pudo registrar el service worker. Revisá que service-worker.js esté en la raíz del sitio, con ese nombre exacto:', err);
+      });
+  });
+}
+</script>
+</body>
+</html>
